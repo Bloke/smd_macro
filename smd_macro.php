@@ -817,15 +817,26 @@ function smd_macro_table_exist($all = '')
 function smd_macro_boot()
 {
     $full_macros = array();
+    $toRegister = array();
+    $reg = '';
 
     $rs = safe_rows('*', SMD_MACRO, '1=1');
 
     foreach ($rs as $row) {
+        $toRegister[] = "->register('" . txpspecialchars($row['macro_name']) . "')";
         $full_macros[] = str_replace('\r\n','
 ', $row['code']); // yukky newline workaround
     }
 
-    $macros = implode(n, $full_macros);
+    if (count($toRegister) > 0) {
+        $reg = "if (class_exists('\Textpattern\Tag\Registry')) {
+            Txp::get('\Textpattern\Tag\Registry')"
+                . (implode(n, $toRegister))
+                .";
+        }";
+    }
+
+    $macros = $reg . n . implode(n, $full_macros);
 
     // Inject the virtual tags into the global scope
     eval($macros);
