@@ -109,7 +109,7 @@ if (txpinterface === 'admin') {
     add_privs($smd_macro_event,'1,2');
     register_tab('content', $smd_macro_event, gTxt('smd_macro_tab_name'));
     register_callback('smd_macro_dispatcher', 'smd_macro');
-    register_callback('smd_macro_upload_form', $smd_macro_event.'_ui', 'upload_form');
+    register_callback('smd_macro_upload_form', $smd_macro_event.'_ui', 'inputlabel.'.$smd_macro_event.'-upload');
     register_callback('smd_macro_welcome', 'plugin_lifecycle.smd_macro');
 }
 
@@ -459,13 +459,9 @@ EOCSS;
 // Add an overwrite checkbox to the upload form
 function smd_macro_upload_form($evt, $stp, $data, $args)
 {
-    $ret = str_replace(
-        '</div>'
-        ,  checkbox('smd_macro_import_overwrite', '1', 0) . gTxt('smd_macro_overwrite') . '</div>'
-        , $data
-    );
-
-    return $ret;
+    return $data .
+        checkbox('smd_macro_import_overwrite', '1', false, 0, 'smd_macro_import_overwrite') .
+        '<label for="smd_macro_import_overwrite">' . gTxt('smd_macro_overwrite') . '</label>';
 }
 
 // ------------------------
