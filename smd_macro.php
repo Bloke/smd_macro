@@ -699,9 +699,9 @@ function smd_macro_table_install($showpane = '1')
     $sql[] = "CREATE TABLE IF NOT EXISTS `".PFX.SMD_MACRO."` (
         `macro_name` varchar(32) NOT NULL default '',
         `description` varchar(255) NULL default '' COLLATE utf8_general_ci,
-        `attributes` text NULL default '' COLLATE utf8_general_ci,
-        `definition` mediumtext NULL default '' COLLATE utf8_general_ci,
-        `code` mediumtext NULL default '',
+        `attributes` text NULL COLLATE utf8_general_ci,
+        `definition` mediumtext NULL COLLATE utf8_general_ci,
+        `code` mediumtext NULL,
         PRIMARY KEY (`macro_name`)
     ) ENGINE=MyISAM, CHARACTER SET=utf8";
 
