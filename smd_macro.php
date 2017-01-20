@@ -17,7 +17,7 @@ $plugin['name'] = 'smd_macro';
 // 1 = Plugin help is in raw HTML.  Not recommended.
 # $plugin['allow_html_help'] = 1;
 
-$plugin['version'] = '0.40';
+$plugin['version'] = '0.41';
 $plugin['author'] = 'Stef Dawson';
 $plugin['author_uri'] = 'http://stefdawson.com/';
 $plugin['description'] = 'Define custom macros/virtual Textpattern tags for your site';
@@ -950,12 +950,6 @@ h2. Author / credits
 
 Written by "Stef Dawson":http://stefdawson.com/contact. Spawned from an idea by jpdupont, with thanks. Also big props to the beta test team: primarily jpdupont, pieman, mrdale, maverick, maruchan and jakob.
 
-h2(#smd_changelog). Changelog
-
-16 Mar 2011 | 0.10 | Initial public release
-27 Mar 2011 | 0.11 | Fixed nesting bug (thanks maverick). Resave your macros after upgrading
-19 Feb 2012 | 0.20 | Fixed UTF-8 collation, forced lower case attribute names and only permitted valid ascii chars / underscores as names (all thanks uli) ; added container support
-10 Oct 2012 | 0.30 | Textpattern 4.5.x compatible
 # --- END PLUGIN HELP ---
 -->
 <?php
